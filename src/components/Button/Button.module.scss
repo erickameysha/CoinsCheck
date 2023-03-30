@@ -1,0 +1,19 @@
+@import "../../GlobalAssets/Fonst/fonts";
+
+.buttons{
+   display: flex;
+   align-items: center;
+   /*justify-content: center;*/
+   justify-content: space-between;
+   margin-top: 1rem;
+  background-color: #548b78;
+  color: white;
+
+.buttons button:first-child{
+  margin-right: 1rem;
+}
+.buttons button:hover{
+  cursor: pointer;
+  opacity: 0.75;
+}
+}

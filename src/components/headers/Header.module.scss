@@ -1,0 +1,36 @@
+@import "../../GlobalAssets/Fonst/fonts";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid gray;
+
+  .header_img {
+    width: 81px;
+
+  }
+
+  .header_price {
+    min-width: 270px;
+    display: flex;
+    justify-content: space-around;
+    @extend %title
+  }
+
+  .header_priceSubtitle {
+    @extend %thin;
+    color: rgb(2, 154, 96);
+  }
+
+  .header_pricelower {
+    @extend %thin;
+
+    color: rgb(235, 77, 75)
+  }
+
+  .header_bill {
+    display: flex;
+    align-items: center;
+  }
+}

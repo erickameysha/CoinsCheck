@@ -1,0 +1,14 @@
+.Card {
+  display: flex;
+  justify-content: space-around;
+
+  .Card_item {
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(241, 242, 250) 0px 5px 10px;
+    gap: 20px;
+  }
+}
