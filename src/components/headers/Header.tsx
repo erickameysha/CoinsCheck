@@ -3,6 +3,7 @@ import s from './Header.module.scss'
 import {AiOutlineUser, ImHome} from "react-icons/all";
 import iconForm from '../../GlobalAssets/svg/home-svgrepo-com.svg'
 import Modal from "../../components/Modal/Modal";
+import {Link} from "react-router-dom";
 const Header = () => {
 
     const [show, isShow] = useState(false)
@@ -13,8 +14,9 @@ const Header = () => {
     return (
         <div>
         <div className={s.header}>
-            <img className={s.header_img}  src="https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/89MrW4Y3UxWqVAbJM2xfqy9uGNE7tMFT6uCtn6i2XH7x/logo.png" alt="logo"/>
-
+            <Link to={'/'}>
+            <img className={s.header_img}  src="https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/89MrW4Y3UxWqVAbJM2xfqy9uGNE7tMFT6uCtn6i2XH7x/logo.png" alt="CoinCheck"/>
+            </Link>
             <div className={s.header_price}>
                 <div className={s.header_priceItem}>
                     BTC <span className={s.header_priceSubtitle} >+3%</span>

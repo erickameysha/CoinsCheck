@@ -1,0 +1,14 @@
+.coin_container{
+  max-width: 1140px;
+  margin: auto;
+}
+.content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 0px 12px #18181b;
+  border-radius: 8px;
+  margin: 1rem 1rem;
+  padding: .7rem 1rem;
+  font-weight: 700;
+}
