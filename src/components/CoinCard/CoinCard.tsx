@@ -12,9 +12,10 @@ const CoinCard = () => {
         }
         fetchCoins()
     }, [])
+    console.log('rerwrer')
     return (
         <div>
-            {coins.map(({id, name, rank, priceUsd, changePercent24Hr}) => {
+            {coins.map(({id, name, rank, priceUSD, changePercent24Hr}) => {
                 return <div className={s.Card} key={id}>
                     <div className={s.Card_item}>
                         <div>
@@ -23,7 +24,7 @@ const CoinCard = () => {
                         </div>
                         <div>
                             <div>
-                                <h1>$ {parseFloat( priceUsd).toFixed(1).slice(0,5)}</h1>
+                                <h1>oeeooe{Number(priceUSD).toLocaleString('eng')}</h1>
                             </div>
                             <div>
                                 {  parseFloat( changePercent24Hr).toFixed(1).slice(0,4)}

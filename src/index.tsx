@@ -4,11 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
+import BillContext, {initState} from './context/context';
+import Example from "./Example";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
+// <Example/>
+
     <BrowserRouter>
             <App/>
     </BrowserRouter>

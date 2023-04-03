@@ -4,11 +4,23 @@
 }
 .content{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   box-shadow: 0px 0px 12px #18181b;
   border-radius: 8px;
   margin: 1rem 1rem;
   padding: .7rem 1rem;
   font-weight: 700;
+}
+.coin{
+
+  .coinButton{
+    transition: transform 0.2s ease 0s;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 15px -3px;
+    background: rgb(24, 198, 131);
+    padding: 12px 26px;
+    color: white;
+    font-size: 16px;
+    border: none;
+  }
 }

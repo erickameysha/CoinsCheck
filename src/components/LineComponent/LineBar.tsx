@@ -9,21 +9,22 @@ Chart.register(CategoryScale);
 
 type PropsType = {
     price: ItemType[]
+    coinID: string| undefined
 }
 const LineBar = (props: PropsType) => {
     const createAllData = () => {
-        const data: number[] = []
+        const data: string[] = []
         const labels: string[] = []
         props.price.forEach((line) => {
-            data.push(line.time)
+            data.push(String(line.time).slice(0,4))
             labels.push(line.priceUsd)
         })
         return {
-            labels,
+            labels: data,
             datasets:[
             {
-                label: "First dataset",
-                data: data,
+             label: props.coinID,
+                data: labels,
                 fill: true,
                 backgroundColor: "rgba(75,192,192,0.2)",
                 borderColor: "rgba(75,192,192,1)",

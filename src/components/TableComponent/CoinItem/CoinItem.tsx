@@ -22,14 +22,12 @@ type PropsType = {
 const CoinItem = (props: PropsType) => {
     return (
         <div className={s.coin_row}>
-            <p>{props.coin.rank}</p>
-            <div className={s. coin_name}>
+            <div className={s.coin_name}>
+
                 <p>{props.coin.symbol.toUpperCase()}</p>
             </div>
-            <p>${props.coin.priceUsd.slice(0,5)}</p>
-            <p>{props.coin.changePercent24Hr}%</p>
-            <p className={s.hideMobile}>${props.coin.volumeUsd24Hr}</p>
-            <p className={s.hideMobile}>${props.coin.marketCapUsd}</p>
+            <p>${Number(props.coin.priceUsd).toLocaleString('eng')}</p>
+            <p>{Number(props.coin.changePercent24Hr).toLocaleString('eng',)}%</p>
         </div>
     );
 };

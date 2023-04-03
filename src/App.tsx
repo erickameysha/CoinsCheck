@@ -1,33 +1,51 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Header from "./components/headers/Header";
-import Coins, {IdContext} from "./components/TableComponent/Coins";
-import axios from "axios";
-import {Route, RouterProvider, Routes} from "react-router-dom";
-import {Coin} from "./routes/Coin";
-import BarChart from "./components/LineComponent/FirstCandies";
+import Coins, {CoinsType, IdContext} from "./components/TableComponent/Coins";
 
+import {Route, Routes} from "react-router-dom";
+import {Coin} from "./routes/Coin";
+
+import {coinCapAPI} from "./api/coincap-api";
+import BillContext, {initState, newRate} from './context/context';
+import test from '../src/components/Modal/Modal'
+
+export type test = {
+    coinID: string | undefined, rate: number, exchange: number, valueChange: number
+}
 const App = () => {
-    const [coins, setCoins] = useState([])
+    const [coins, setCoins] = useState<CoinsType[]>([])
+    const [bill, setBill] = useState<test[]>(initState.data)
+    const [deleteDatas, setDeleteDate] = useState<string>(initState.deleteData)
 
     useEffect(() => {
-
-        axios.get(`https://api.coincap.io/v2/assets?limit=20`).then((res) => {
-            console.log(res)
+        coinCapAPI.getCoins('40').then((res) => {
             setCoins(res.data.data)
-            console.log(coins)
         })
+        let valueAsconst =localStorage.getItem('BillValue')
+        if (valueAsconst){
+            let newValue= JSON.parse(valueAsconst)
+            setBill(newValue )
+        }
+
     }, [])
 
-    console.log('app' + coins)
+
     return (
-        <div>
-            <Header/>
-            <Routes>
-                <Route path={'/'} element={ <Coins coins={coins}/>}/>
-                <Route path={'/coin/:coinID'} element={<Coin />}/>
-            </Routes>
-<BarChart/>
-        </div>
+        <BillContext.Provider
+
+        value={{
+            data: bill,
+            deleteData:deleteDatas
+        }}>
+            <div>
+                <Header />
+                <Routes>
+                    <Route path={'/'} element={<Coins coins={coins}/>}/>
+                    <Route path={'/coin/:coinID'} element={<Coin/>}/>
+                </Routes>
+
+            </div>
+        </BillContext.Provider>
     );
 };
 
