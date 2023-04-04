@@ -24,7 +24,7 @@ const CoinCard = () => {
                         </div>
                         <div>
                             <div>
-                                <h1>oeeooe{Number(priceUSD).toLocaleString('eng')}</h1>
+                                <h1>{Number(priceUSD).toLocaleString('eng')}</h1>
                             </div>
                             <div>
                                 {  parseFloat( changePercent24Hr).toFixed(1).slice(0,4)}

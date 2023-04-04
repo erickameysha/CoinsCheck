@@ -1,10 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import s from './Coins.module.scss'
 import axios from "axios";
 import CoinItem from "./CoinItem/CoinItem";
 import {Link, Route} from "react-router-dom";
 import {Coin} from "../../routes/Coin";
 import {coinCapAPI} from "../../api/coincap-api";
+import {CoinContext, CoinContextType} from "../../context/CoinContext";
+import {CoinItemContext, CoinItemContextType} from "../../context/CoinItemContext";
 
 
 export type CoinsType = {
@@ -21,24 +23,32 @@ export type CoinsType = {
     vwap24Hr: string
     explorer: string
 }
-type PropsType = {
-    coins: CoinsType[]
+type propsType = {
+  coins:CoinsType[]
+    getCoinItemHandler: (id:string)=> void
+
 }
 
+const Coins = (props: propsType) => {
+    let {coins,getCoinItemHandler} = props
 
 
-let defaultState: string | undefined =''
+    const callBackHandler = (elID: string) => {
+        getCoinItemHandler(elID)
+    }
 
-export let IdContext = React.createContext(defaultState)
-
-const Coins = (props: PropsType) => {
-
+    const renderCoins = coins.map(el => {
+        return (
 
 
+            <Link onClick={()=>callBackHandler(el.id)} className={s.href} to={`/coin/${el.id}`} key={el.id}>
+                <CoinItem key={el.id} coin={el}/>
+            </Link>
 
+        )
+    })
     return (
         <div className={s.container}>
-            <>
                 <div>
                     <div className={s.coin}>
 
@@ -47,19 +57,9 @@ const Coins = (props: PropsType) => {
                         <p>24h</p>
                     </div>
                 </div>
-                {props.coins.map(el => {
-
-
-
-                    return (
-
-
-                            <Link className={s.href} to={`/coin/${el.id}`}key={el.id}>
-                                <CoinItem key={el.id} coin={el}/>
-                            </Link>
-
-                    )
-                })}</>
+                {
+                    renderCoins
+                }
         </div>
     )
 };
